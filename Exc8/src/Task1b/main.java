@@ -28,11 +28,12 @@ public class main
     Thread t1 = new Thread(new Runnable() {
         @Override
         public void run() {
-            while(true) {
+            boolean running = true;
+            while(running) {
                 foo();
                 int c = bar();
                 System.out.println(t1.getName() + "'s count: " + c);
-                if(c >= 5)t1.stop();
+                if(c >= 5)running = false;
                 try{
                     Thread.sleep(100);
                 }catch(Exception e){
@@ -45,11 +46,12 @@ public class main
     Thread t2 = new Thread(new Runnable() {
         @Override
         public void run() {
-            while(true) {
+            boolean running = true;
+            while(running) {
                 foo();
                 int c = bar();
                 System.out.println(t2.getName() + "'s count: " + c);
-                if(c >= 5)t2.stop();
+                if(c >= 5)running = false;
                 try{
                     Thread.sleep(100);
                 }catch(Exception e){
