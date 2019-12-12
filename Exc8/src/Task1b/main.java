@@ -4,7 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class main
 {
-    private ReentrantLock lock;
+    private ReentrantLock lock = new ReentrantLock(true);
     private int counter;
 
     public static void main(String[] args) {
@@ -28,20 +28,34 @@ public class main
     Thread t1 = new Thread(new Runnable() {
         @Override
         public void run() {
-            foo();
-            int c = bar();
-            System.out.println(t1.getName() + "'s count: " + c);
-            if(c >= 5)t1.stop();
+            while(true) {
+                foo();
+                int c = bar();
+                System.out.println(t1.getName() + "'s count: " + c);
+                if(c >= 5)t1.stop();
+                try{
+                    Thread.sleep(100);
+                }catch(Exception e){
+                    //unhandled
+                }
+            }
         }
     });
 
     Thread t2 = new Thread(new Runnable() {
         @Override
         public void run() {
-            foo();
-            int c = bar();
-            System.out.println(t2.getName() + "'s count: " + c);
-            if(c >= 5)t2.stop();
-        }
+            while(true) {
+                foo();
+                int c = bar();
+                System.out.println(t2.getName() + "'s count: " + c);
+                if(c >= 5)t2.stop();
+                try{
+                    Thread.sleep(100);
+                }catch(Exception e){
+                    //unhandled
+                }
+            }
+            }
     });
 }
