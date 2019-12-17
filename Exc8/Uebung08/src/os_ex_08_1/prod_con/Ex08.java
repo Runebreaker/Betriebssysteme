@@ -5,6 +5,11 @@ public class Ex08 {
 		Runnable task = () -> {
 			for (int i = 0; i < repeat; ++i) {
 				buffer.put(data);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		};
 		return new Thread(task, name);
@@ -12,9 +17,22 @@ public class Ex08 {
 
 	protected static Thread createConsumer(String name, Buffer buffer, int repeat) {
 		Runnable task = () -> {
+			while (buffer.isLocked)
+			{
+				try {
+					Thread.sleep(10);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
 			for (int i = 0; i < repeat; ++i) {
 				String data = buffer.get();
 				System.out.println(name + " consumed 1 " + data);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
 		};
 		return new Thread(task, name);
