@@ -8,13 +8,23 @@ public class Buffer {
 	public volatile boolean isLocked = true;
 
 	protected String content = null;
+	protected int amount;
 
 	public void put(String data) {
 		// Make me thread safe and synchronize me (this is intended to
 		// be a blocking call)
 		lock.lock();
 		isLocked = false;
-		content = data;
+		if(data.equals(content))
+		{
+			amount++;
+		}
+		else
+		{
+			content = data;
+			amount = 1;
+		}
+
 		lock.unlock();
 	}
 
@@ -22,8 +32,15 @@ public class Buffer {
 		// Make me thread safe and synchronize me (this is intended to
 		// be a blocking call)
 		lock.lock();
+		if(amount > 1)
+		{
+			amount--;
+		}
+		else
+		{
+			content = null;
+		}
 		String data = content;
-		content = null;
 		lock.unlock();
 		return data;
 	}
