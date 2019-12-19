@@ -1,0 +1,4 @@
+1a) With multiple producers and consumers, the stack size of the buffer and speed of each individual should be altered correctly.
+    Additionally, the producers have to go first.
+
+ b) Problems here: Can still only consume 1 element per consumer.
