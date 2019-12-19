@@ -1,0 +1,5 @@
+a)
+Macht meist Sinn, wenn die true condition schnell erreicht wird. -> Effizientester Weg, auf etwas zu warten.
+Performance Impact, da es konstant läuft.
+
+b)

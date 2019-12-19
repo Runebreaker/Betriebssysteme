@@ -1,0 +1,2 @@
+Vorteil: Kein "Overflow" Problem mehr
+Nachteil: Kein Limit -> Producer läuft konstant, nicht abgestimmt auf Consumer

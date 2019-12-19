@@ -4,8 +4,6 @@ import os_ex_08.Semaphore;
 import os_ex_08_3.semaphore.FairSemaphore;
 import os_ex_08_3.semaphore.UnfairSemaphore;
 
-/** Test of the fairness of a semaphore.
- */
 public class FairnessTest {
     /** Task used to check the fairness of a semaphore.
 

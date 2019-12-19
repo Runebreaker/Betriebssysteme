@@ -1,0 +1,2 @@
+Semaphores can be system-wide and be accessed by multiple threads based on the permit count and the number of
+permits used by acquire(int count).
